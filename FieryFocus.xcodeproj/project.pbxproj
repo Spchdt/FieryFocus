@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EB7021C32AE68B6A00D9728F /* FireFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB7021C32AE68B6A00D9728F /* FieryFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieryFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7021CA2AE68B6C00D9728F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB7021CD2AE68B6C00D9728F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB7021EC2AE68C1900D9728F /* FireFocusApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireFocusApp.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		EB7021C42AE68B6A00D9728F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EB7021C32AE68B6A00D9728F /* FireFocus.app */,
+				EB7021C32AE68B6A00D9728F /* FieryFocus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,17 +74,14 @@
 			isa = PBXGroup;
 			children = (
 				EB7021EC2AE68C1900D9728F /* FireFocusApp.swift */,
-				EB7021F22AE68C1900D9728F /* CircularProgressView.swift */,
 				EB7021ED2AE68C1900D9728F /* ContentView.swift */,
-				EB7021F52AE68C1900D9728F /* EditTimeView.swift */,
-				EB7021F72AE68C1900D9728F /* Focus.swift */,
 				EB7021F42AE68C1900D9728F /* FocusView.swift */,
 				EB7021F32AE68C1900D9728F /* HistoryView.swift */,
 				EB7021F62AE68C1900D9728F /* NewFocusView.swift */,
-				EB7021F12AE68C1900D9728F /* roundedSection.swift */,
-				EB7021EE2AE68C1900D9728F /* Session.swift */,
-				EB7021EF2AE68C1900D9728F /* SessionButtonView.swift */,
-				EB7021F02AE68C1900D9728F /* SessionView.swift */,
+				EB7021F52AE68C1900D9728F /* EditTimeView.swift */,
+				EBE36CC02AE6C8E200670A59 /* Extension */,
+				EBE36CBF2AE6C8B300670A59 /* SubView */,
+				EBE36CBE2AE6C89300670A59 /* Object */,
 				EB7021CA2AE68B6C00D9728F /* Assets.xcassets */,
 				EB7021CC2AE68B6C00D9728F /* Preview Content */,
 			);
@@ -99,12 +96,39 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EBE36CBE2AE6C89300670A59 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				EB7021F72AE68C1900D9728F /* Focus.swift */,
+				EB7021EE2AE68C1900D9728F /* Session.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		EBE36CBF2AE6C8B300670A59 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				EB7021F02AE68C1900D9728F /* SessionView.swift */,
+				EB7021EF2AE68C1900D9728F /* SessionButtonView.swift */,
+				EB7021F22AE68C1900D9728F /* CircularProgressView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		EBE36CC02AE6C8E200670A59 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EB7021F12AE68C1900D9728F /* roundedSection.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EB7021C22AE68B6A00D9728F /* FireFocus */ = {
+		EB7021C22AE68B6A00D9728F /* FieryFocus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB7021D12AE68B6C00D9728F /* Build configuration list for PBXNativeTarget "FireFocus" */;
+			buildConfigurationList = EB7021D12AE68B6C00D9728F /* Build configuration list for PBXNativeTarget "FieryFocus" */;
 			buildPhases = (
 				EB7021BF2AE68B6A00D9728F /* Sources */,
 				EB7021C02AE68B6A00D9728F /* Frameworks */,
@@ -114,12 +138,12 @@
 			);
 			dependencies = (
 			);
-			name = FireFocus;
+			name = FieryFocus;
 			packageProductDependencies = (
 				EB7022052AE68C4100D9728F /* MCEmojiPicker */,
 			);
 			productName = FireFocus;
-			productReference = EB7021C32AE68B6A00D9728F /* FireFocus.app */;
+			productReference = EB7021C32AE68B6A00D9728F /* FieryFocus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +162,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EB7021BE2AE68B6A00D9728F /* Build configuration list for PBXProject "FireFocus" */;
+			buildConfigurationList = EB7021BE2AE68B6A00D9728F /* Build configuration list for PBXProject "FieryFocus" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,7 +178,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EB7021C22AE68B6A00D9728F /* FireFocus */,
+				EB7021C22AE68B6A00D9728F /* FieryFocus */,
 			);
 		};
 /* End PBXProject section */
@@ -335,7 +359,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = artties.FireFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = artties.FieryFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -366,7 +390,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = artties.FireFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = artties.FieryFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -377,7 +401,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EB7021BE2AE68B6A00D9728F /* Build configuration list for PBXProject "FireFocus" */ = {
+		EB7021BE2AE68B6A00D9728F /* Build configuration list for PBXProject "FieryFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB7021CF2AE68B6C00D9728F /* Debug */,
@@ -386,7 +410,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB7021D12AE68B6C00D9728F /* Build configuration list for PBXNativeTarget "FireFocus" */ = {
+		EB7021D12AE68B6C00D9728F /* Build configuration list for PBXNativeTarget "FieryFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB7021D22AE68B6C00D9728F /* Debug */,

@@ -42,7 +42,7 @@ struct FocusView: View {
                                 .foregroundStyle(.primary)
                                 .roundedSection()
                             }
-                            .listSectionSpacing(focuses[focuses.count - 1] == focus ? .default : .compact)
+                            .listSectionSpacing(focuses.count == 0 || focuses[focuses.count - 1] == focus ? .default : .compact)
                         }
                     }
                     .onDelete(perform: currentFocus == nil ? deleteFocus : nil)
@@ -67,7 +67,7 @@ struct FocusView: View {
                         .roundedSection()
                     }
                 }
-                .navigationTitle("Focus")
+                .navigationTitle("FieryFocus")
             }
         }
     }
