@@ -7,18 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB7021C72AE68B6A00D9728F /* FireFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021C62AE68B6A00D9728F /* FireFocusApp.swift */; };
-		EB7021C92AE68B6A00D9728F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021C82AE68B6A00D9728F /* ContentView.swift */; };
 		EB7021CB2AE68B6C00D9728F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7021CA2AE68B6C00D9728F /* Assets.xcassets */; };
 		EB7021CE2AE68B6C00D9728F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7021CD2AE68B6C00D9728F /* Preview Assets.xcassets */; };
+		EB7021F82AE68C1900D9728F /* FireFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021EC2AE68C1900D9728F /* FireFocusApp.swift */; };
+		EB7021F92AE68C1900D9728F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021ED2AE68C1900D9728F /* ContentView.swift */; };
+		EB7021FA2AE68C1900D9728F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021EE2AE68C1900D9728F /* Session.swift */; };
+		EB7021FB2AE68C1900D9728F /* SessionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021EF2AE68C1900D9728F /* SessionButtonView.swift */; };
+		EB7021FC2AE68C1900D9728F /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F02AE68C1900D9728F /* SessionView.swift */; };
+		EB7021FD2AE68C1900D9728F /* roundedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F12AE68C1900D9728F /* roundedSection.swift */; };
+		EB7021FE2AE68C1900D9728F /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F22AE68C1900D9728F /* CircularProgressView.swift */; };
+		EB7021FF2AE68C1900D9728F /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F32AE68C1900D9728F /* HistoryView.swift */; };
+		EB7022002AE68C1900D9728F /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F42AE68C1900D9728F /* FocusView.swift */; };
+		EB7022012AE68C1900D9728F /* EditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F52AE68C1900D9728F /* EditTimeView.swift */; };
+		EB7022022AE68C1900D9728F /* NewFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F62AE68C1900D9728F /* NewFocusView.swift */; };
+		EB7022032AE68C1900D9728F /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F72AE68C1900D9728F /* Focus.swift */; };
+		EB7022062AE68C4100D9728F /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = EB7022052AE68C4100D9728F /* MCEmojiPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EB7021C32AE68B6A00D9728F /* FireFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB7021C62AE68B6A00D9728F /* FireFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireFocusApp.swift; sourceTree = "<group>"; };
-		EB7021C82AE68B6A00D9728F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EB7021CA2AE68B6C00D9728F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB7021CD2AE68B6C00D9728F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EB7021EC2AE68C1900D9728F /* FireFocusApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireFocusApp.swift; sourceTree = "<group>"; };
+		EB7021ED2AE68C1900D9728F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EB7021EE2AE68C1900D9728F /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		EB7021EF2AE68C1900D9728F /* SessionButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionButtonView.swift; sourceTree = "<group>"; };
+		EB7021F02AE68C1900D9728F /* SessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		EB7021F12AE68C1900D9728F /* roundedSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roundedSection.swift; sourceTree = "<group>"; };
+		EB7021F22AE68C1900D9728F /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		EB7021F32AE68C1900D9728F /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		EB7021F42AE68C1900D9728F /* FocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
+		EB7021F52AE68C1900D9728F /* EditTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimeView.swift; sourceTree = "<group>"; };
+		EB7021F62AE68C1900D9728F /* NewFocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFocusView.swift; sourceTree = "<group>"; };
+		EB7021F72AE68C1900D9728F /* Focus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Focus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB7022062AE68C4100D9728F /* MCEmojiPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +73,18 @@
 		EB7021C52AE68B6A00D9728F /* FireFocus */ = {
 			isa = PBXGroup;
 			children = (
-				EB7021C62AE68B6A00D9728F /* FireFocusApp.swift */,
-				EB7021C82AE68B6A00D9728F /* ContentView.swift */,
+				EB7021EC2AE68C1900D9728F /* FireFocusApp.swift */,
+				EB7021F22AE68C1900D9728F /* CircularProgressView.swift */,
+				EB7021ED2AE68C1900D9728F /* ContentView.swift */,
+				EB7021F52AE68C1900D9728F /* EditTimeView.swift */,
+				EB7021F72AE68C1900D9728F /* Focus.swift */,
+				EB7021F42AE68C1900D9728F /* FocusView.swift */,
+				EB7021F32AE68C1900D9728F /* HistoryView.swift */,
+				EB7021F62AE68C1900D9728F /* NewFocusView.swift */,
+				EB7021F12AE68C1900D9728F /* roundedSection.swift */,
+				EB7021EE2AE68C1900D9728F /* Session.swift */,
+				EB7021EF2AE68C1900D9728F /* SessionButtonView.swift */,
+				EB7021F02AE68C1900D9728F /* SessionView.swift */,
 				EB7021CA2AE68B6C00D9728F /* Assets.xcassets */,
 				EB7021CC2AE68B6C00D9728F /* Preview Content */,
 			);
@@ -83,6 +115,9 @@
 			dependencies = (
 			);
 			name = FireFocus;
+			packageProductDependencies = (
+				EB7022052AE68C4100D9728F /* MCEmojiPicker */,
+			);
 			productName = FireFocus;
 			productReference = EB7021C32AE68B6A00D9728F /* FireFocus.app */;
 			productType = "com.apple.product-type.application";
@@ -99,6 +134,7 @@
 				TargetAttributes = {
 					EB7021C22AE68B6A00D9728F = {
 						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -111,6 +147,9 @@
 				Base,
 			);
 			mainGroup = EB7021BA2AE68B6A00D9728F;
+			packageReferences = (
+				EB7022042AE68C4100D9728F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */,
+			);
 			productRefGroup = EB7021C42AE68B6A00D9728F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +176,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB7021C92AE68B6A00D9728F /* ContentView.swift in Sources */,
-				EB7021C72AE68B6A00D9728F /* FireFocusApp.swift in Sources */,
+				EB7021F92AE68C1900D9728F /* ContentView.swift in Sources */,
+				EB7021FF2AE68C1900D9728F /* HistoryView.swift in Sources */,
+				EB7022002AE68C1900D9728F /* FocusView.swift in Sources */,
+				EB7021FD2AE68C1900D9728F /* roundedSection.swift in Sources */,
+				EB7021FC2AE68C1900D9728F /* SessionView.swift in Sources */,
+				EB7021FE2AE68C1900D9728F /* CircularProgressView.swift in Sources */,
+				EB7022032AE68C1900D9728F /* Focus.swift in Sources */,
+				EB7021FB2AE68C1900D9728F /* SessionButtonView.swift in Sources */,
+				EB7022022AE68C1900D9728F /* NewFocusView.swift in Sources */,
+				EB7022012AE68C1900D9728F /* EditTimeView.swift in Sources */,
+				EB7021F82AE68C1900D9728F /* FireFocusApp.swift in Sources */,
+				EB7021FA2AE68C1900D9728F /* Session.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +318,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FireFocus/Preview Content\"";
@@ -288,6 +338,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = artties.FireFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -298,6 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FireFocus/Preview Content\"";
@@ -344,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB7022042AE68C4100D9728F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/izyumkin/MCEmojiPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB7022052AE68C4100D9728F /* MCEmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB7022042AE68C4100D9728F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */;
+			productName = MCEmojiPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB7021BB2AE68B6A00D9728F /* Project object */;
 }
