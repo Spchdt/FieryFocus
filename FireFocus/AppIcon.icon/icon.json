@@ -1,0 +1,62 @@
+{
+  "fill" : {
+    "automatic-gradient" : "extended-gray:1.00000,1.00000",
+    "orientation" : {
+      "start" : {
+        "x" : 0.5,
+        "y" : 0
+      },
+      "stop" : {
+        "x" : 0.5,
+        "y" : 0.7
+      }
+    }
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "linear-gradient" : [
+              "srgb:1.00000,0.57811,0.00000,1.00000",
+              "srgb:1.00000,0.57811,0.00000,0.33277"
+            ],
+            "orientation" : {
+              "start" : {
+                "x" : 0.5,
+                "y" : 0
+              },
+              "stop" : {
+                "x" : 0.5484843767389691,
+                "y" : 1.3175795107356356
+              }
+            }
+          },
+          "image-name" : "Focuzz_silo.png",
+          "name" : "Focuzz_silo",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -7,
+              24
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

@@ -14,9 +14,19 @@ struct FireFocusApp: App {
     
     init() {
         do {
-            modelContainer = try ModelContainer(for: Focus.self)
+            let configuration = ModelConfiguration(
+                "FieryFocus",
+                schema: Schema([Focus.self, Session.self]),
+                cloudKitDatabase: .private("iCloud.FieryFocusContainer")
+            )
+
+            modelContainer = try ModelContainer(
+                for: Focus.self,
+                Session.self,
+                configurations: configuration
+            )
         } catch {
-            fatalError("Could not initialize ModelContainer")
+            fatalError("Could not initialize ModelContainer: \(error)")
         }
     }
     
