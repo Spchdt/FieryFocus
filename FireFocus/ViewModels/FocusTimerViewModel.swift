@@ -2,7 +2,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-final class FocusTimerSession {
+final class FocusTimerViewModel {
     let seconds: Int
     var start = false
     var end = false
@@ -12,7 +12,7 @@ final class FocusTimerSession {
     var alarmDisplayDate = Date.now
     var showTime = false
     var alarmCoordinator = FocusAlarmCoordinator()
-    
+
     var timerActive: Bool {
         guard start, !end else { return false }
         guard let mode = alarmCoordinator.presentationState?.mode else { return false }
@@ -29,14 +29,18 @@ final class FocusTimerSession {
         }
     }
 
+    // MARK: - Timer tick
+
     func handleTimerTick(_ time: Date) -> Bool {
         guard start, !end else { return false }
         alarmDisplayDate = time
         return timerActive && displayedSeconds(referenceDate: time) <= 0
     }
 
+    // MARK: - Play / Pause
+
     @discardableResult
-    func playPauseTimer(focus: Focus, color: Color) async -> Bool {
+    func togglePlayPause(focus: Focus, color: Color) async -> Bool {
         if !start {
             return await scheduleAndStart(focus: focus, color: color)
         } else if timerActive {
@@ -44,18 +48,15 @@ final class FocusTimerSession {
         } else {
             alarmCoordinator.resumeCurrentAlarm()
         }
-
         showTimeIfNeeded()
         return true
     }
 
+    // MARK: - Session lifecycle
+
     func complete(focus: Focus) {
         guard !end else { return }
-
-        if showTime {
-            showTime.toggle()
-        }
-
+        if showTime { showTime.toggle() }
         focus.appendSession(Session(
             name: focus.name,
             emoji: focus.emoji,
@@ -74,6 +75,8 @@ final class FocusTimerSession {
         end = true
     }
 
+    // MARK: - Display helpers
+
     func progress(fallbackTotal: Int) -> Double {
         guard start else { return 0 }
         return alarmCoordinator.progress(referenceDate: alarmDisplayDate, fallbackTotal: fallbackTotal)
@@ -91,6 +94,8 @@ final class FocusTimerSession {
         }
     }
 
+    // MARK: - Private
+
     private func scheduleAndStart(focus: Focus, color: Color) async -> Bool {
         guard !schedulingAlarm else { return true }
         schedulingAlarm = true
@@ -107,7 +112,6 @@ final class FocusTimerSession {
             alarmErrorMessage = alarmCoordinator.lastErrorDescription ?? "AlarmKit failed without returning an error."
             return false
         }
-
         startLocalTimer()
         return true
     }
@@ -118,19 +122,19 @@ final class FocusTimerSession {
                 start.toggle()
             }
         }
-
         showTimeIfNeeded()
     }
 
     private func showTimeIfNeeded() {
         if !showTime {
-            withAnimation {
-                showTime.toggle()
-            }
+            withAnimation { showTime.toggle() }
         }
     }
 
     private func displayedSeconds(referenceDate: Date? = nil) -> Int {
-        alarmCoordinator.remainingSeconds(referenceDate: referenceDate ?? alarmDisplayDate, fallback: seconds)
+        alarmCoordinator.remainingSeconds(
+            referenceDate: referenceDate ?? alarmDisplayDate,
+            fallback: seconds
+        )
     }
 }

@@ -19,7 +19,10 @@
 		A10000000000000000000031 /* FocusAlarmCoordinator+Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000033 /* FocusAlarmCoordinator+Observation.swift */; };
 		A10000000000000000000032 /* FocusAlarmCoordinator+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000034 /* FocusAlarmCoordinator+Presentation.swift */; };
 		A10000000000000000000035 /* FocusAlarmCoordinator+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000036 /* FocusAlarmCoordinator+Authorization.swift */; };
-		A10000000000000000000037 /* AlarmFocusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000038 /* AlarmFocusCard.swift */; };
+		A20000000000000000000001 /* AlarmLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* AlarmLockScreenView.swift */; };
+		A20000000000000000000002 /* AlarmExpandedIslandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000012 /* AlarmExpandedIslandView.swift */; };
+		A20000000000000000000003 /* AlarmCompactIslandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000013 /* AlarmCompactIslandView.swift */; };
+		A20000000000000000000004 /* AlarmLiveActivityShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000014 /* AlarmLiveActivityShared.swift */; };
 		EB1AA1152FEA347600BBB437 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = EB1AA1142FEA347500BBB437 /* AppIcon.icon */; };
 		EB7021CB2AE68B6C00D9728F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7021CA2AE68B6C00D9728F /* Assets.xcassets */; };
 		EB7021CE2AE68B6C00D9728F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7021CD2AE68B6C00D9728F /* Preview Assets.xcassets */; };
@@ -30,7 +33,6 @@
 		EB7021FE2AE68C1900D9728F /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F22AE68C1900D9728F /* CircularProgressView.swift */; };
 		EB7021FF2AE68C1900D9728F /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F32AE68C1900D9728F /* StatisticView.swift */; };
 		EB7022002AE68C1900D9728F /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F42AE68C1900D9728F /* FocusView.swift */; };
-		EB7022012AE68C1900D9728F /* EditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F52AE68C1900D9728F /* EditTimeView.swift */; };
 		EB7022022AE68C1900D9728F /* NewFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F62AE68C1900D9728F /* NewFocusView.swift */; };
 		EB7022032AE68C1900D9728F /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7021F72AE68C1900D9728F /* Focus.swift */; };
 		EB7022062AE68C4100D9728F /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = EB7022052AE68C4100D9728F /* MCEmojiPicker */; };
@@ -56,6 +58,11 @@
 		EBA000000000000000000017 /* StatisticSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA000000000000000000117 /* StatisticSessionStore.swift */; };
 		EBA000000000000000000018 /* StatisticCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA000000000000000000118 /* StatisticCalculator.swift */; };
 		EBA000000000000000000019 /* StatisticFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA000000000000000000119 /* StatisticFormatter.swift */; };
+		EBA000000000000000000020 /* AppReviewPromptPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA000000000000000000122 /* AppReviewPromptPolicy.swift */; };
+		EBC000000000000000000001 /* FocusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC000000000000000000201 /* FocusListViewModel.swift */; };
+		EBC000000000000000000002 /* FocusTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC000000000000000000202 /* FocusTimerViewModel.swift */; };
+		EBC000000000000000000003 /* FocusFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC000000000000000000203 /* FocusFormViewModel.swift */; };
+		EBC000000000000000000004 /* StatisticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC000000000000000000204 /* StatisticViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +102,10 @@
 		A10000000000000000000033 /* FocusAlarmCoordinator+Observation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusAlarmCoordinator+Observation.swift"; sourceTree = "<group>"; };
 		A10000000000000000000034 /* FocusAlarmCoordinator+Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusAlarmCoordinator+Presentation.swift"; sourceTree = "<group>"; };
 		A10000000000000000000036 /* FocusAlarmCoordinator+Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusAlarmCoordinator+Authorization.swift"; sourceTree = "<group>"; };
-		A10000000000000000000038 /* AlarmFocusCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmFocusCard.swift; sourceTree = "<group>"; };
+		A20000000000000000000011 /* AlarmLockScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmLockScreenView.swift; sourceTree = "<group>"; };
+		A20000000000000000000012 /* AlarmExpandedIslandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmExpandedIslandView.swift; sourceTree = "<group>"; };
+		A20000000000000000000013 /* AlarmCompactIslandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmCompactIslandView.swift; sourceTree = "<group>"; };
+		A20000000000000000000014 /* AlarmLiveActivityShared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmLiveActivityShared.swift; sourceTree = "<group>"; };
 		EB1AA1142FEA347500BBB437 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		EB1AA1162FEA826F00BBB437 /* FieryFocus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FieryFocus.entitlements; sourceTree = "<group>"; };
 		EB7021C32AE68B6A00D9728F /* FieryFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieryFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +118,6 @@
 		EB7021F22AE68C1900D9728F /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		EB7021F32AE68C1900D9728F /* StatisticView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		EB7021F42AE68C1900D9728F /* FocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
-		EB7021F52AE68C1900D9728F /* EditTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimeView.swift; sourceTree = "<group>"; };
 		EB7021F62AE68C1900D9728F /* NewFocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFocusView.swift; sourceTree = "<group>"; };
 		EB7021F72AE68C1900D9728F /* Focus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Focus.swift; sourceTree = "<group>"; };
 		EB70220B2AE68C1900D9728F /* FocusRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusRow.swift; sourceTree = "<group>"; };
@@ -133,6 +142,11 @@
 		EBA000000000000000000117 /* StatisticSessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticSessionStore.swift; sourceTree = "<group>"; };
 		EBA000000000000000000118 /* StatisticCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticCalculator.swift; sourceTree = "<group>"; };
 		EBA000000000000000000119 /* StatisticFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticFormatter.swift; sourceTree = "<group>"; };
+		EBA000000000000000000122 /* AppReviewPromptPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReviewPromptPolicy.swift; sourceTree = "<group>"; };
+		EBC000000000000000000201 /* FocusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusListViewModel.swift; sourceTree = "<group>"; };
+		EBC000000000000000000202 /* FocusTimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusTimerViewModel.swift; sourceTree = "<group>"; };
+		EBC000000000000000000203 /* FocusFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusFormViewModel.swift; sourceTree = "<group>"; };
+		EBC000000000000000000204 /* StatisticViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,11 +186,22 @@
 			children = (
 				A10000000000000000000014 /* AlarmLiveActivityBundle.swift */,
 				A10000000000000000000015 /* AlarmLiveActivity.swift */,
-				A10000000000000000000038 /* AlarmFocusCard.swift */,
+				A20000000000000000000016 /* UI */,
 				A10000000000000000000016 /* Assets.xcassets */,
 				A10000000000000000000017 /* Info.plist */,
 			);
 			path = AlarmLiveActivity;
+			sourceTree = "<group>";
+		};
+		A20000000000000000000016 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000011 /* AlarmLockScreenView.swift */,
+				A20000000000000000000012 /* AlarmExpandedIslandView.swift */,
+				A20000000000000000000013 /* AlarmCompactIslandView.swift */,
+				A20000000000000000000014 /* AlarmLiveActivityShared.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		EB7021BA2AE68B6A00D9728F = {
@@ -206,6 +231,7 @@
 				EB7021ED2AE68C1900D9728F /* ContentView.swift */,
 				EBA000000000000000000120 /* Views */,
 				EBE36CBF2AE6C8B300670A59 /* Components */,
+				EBC000000000000000000200 /* ViewModels */,
 				EBA000000000000000000121 /* Services */,
 				A10000000000000000000018 /* AlarmKit */,
 				EBE36CC02AE6C8E200670A59 /* Extensions */,
@@ -232,9 +258,19 @@
 				EB7021F32AE68C1900D9728F /* StatisticView.swift */,
 				EB7021F62AE68C1900D9728F /* NewFocusView.swift */,
 				EB70220D2AE68C1900D9728F /* EditFocusView.swift */,
-				EB7021F52AE68C1900D9728F /* EditTimeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		EBC000000000000000000200 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EBC000000000000000000201 /* FocusListViewModel.swift */,
+				EBC000000000000000000202 /* FocusTimerViewModel.swift */,
+				EBC000000000000000000203 /* FocusFormViewModel.swift */,
+				EBC000000000000000000204 /* StatisticViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		EBA000000000000000000121 /* Services */ = {
@@ -246,6 +282,7 @@
 				EBA000000000000000000117 /* StatisticSessionStore.swift */,
 				EBA000000000000000000118 /* StatisticCalculator.swift */,
 				EBA000000000000000000119 /* StatisticFormatter.swift */,
+				EBA000000000000000000122 /* AppReviewPromptPolicy.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -403,7 +440,10 @@
 				A10000000000000000000005 /* FocusAlarmIntents.swift in Sources */,
 				A10000000000000000000006 /* AlarmLiveActivityBundle.swift in Sources */,
 				A10000000000000000000007 /* AlarmLiveActivity.swift in Sources */,
-				A10000000000000000000037 /* AlarmFocusCard.swift in Sources */,
+				A20000000000000000000001 /* AlarmLockScreenView.swift in Sources */,
+				A20000000000000000000002 /* AlarmExpandedIslandView.swift in Sources */,
+				A20000000000000000000003 /* AlarmCompactIslandView.swift in Sources */,
+				A20000000000000000000004 /* AlarmLiveActivityShared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +477,6 @@
 				EBA000000000000000000011 /* FocusFormTextSection.swift in Sources */,
 				EBA000000000000000000012 /* FocusFormTimeSection.swift in Sources */,
 				EBA000000000000000000013 /* DismissAttemptObserver.swift in Sources */,
-				EB7022012AE68C1900D9728F /* EditTimeView.swift in Sources */,
 				EB70220E2AE68C1900D9728F /* EditFocusView.swift in Sources */,
 				A10000000000000000000003 /* FocusAlarmCoordinator.swift in Sources */,
 				A10000000000000000000035 /* FocusAlarmCoordinator+Authorization.swift in Sources */,
@@ -447,6 +486,11 @@
 				EBA000000000000000000017 /* StatisticSessionStore.swift in Sources */,
 				EBA000000000000000000018 /* StatisticCalculator.swift in Sources */,
 				EBA000000000000000000019 /* StatisticFormatter.swift in Sources */,
+				EBA000000000000000000020 /* AppReviewPromptPolicy.swift in Sources */,
+				EBC000000000000000000001 /* FocusListViewModel.swift in Sources */,
+				EBC000000000000000000002 /* FocusTimerViewModel.swift in Sources */,
+				EBC000000000000000000003 /* FocusFormViewModel.swift in Sources */,
+				EBC000000000000000000004 /* StatisticViewModel.swift in Sources */,
 				EB7021F82AE68C1900D9728F /* FireFocusApp.swift in Sources */,
 				EB7021FA2AE68C1900D9728F /* Session.swift in Sources */,
 			);
@@ -665,7 +709,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FieryFocus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"FireFocus/Preview Content\"";
 				DEVELOPMENT_TEAM = 4SMNJBM82Z;
 				ENABLE_PREVIEWS = YES;
@@ -682,7 +726,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.artties.FieryFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -700,7 +744,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FieryFocus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"FireFocus/Preview Content\"";
 				DEVELOPMENT_TEAM = 4SMNJBM82Z;
 				ENABLE_PREVIEWS = YES;
@@ -717,7 +761,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.artties.FieryFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

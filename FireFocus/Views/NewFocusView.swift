@@ -1,8 +1,6 @@
 //
 //  NewFocusView.swift
-//  Meditaste
-//
-//  Created by Supachod Trakansirorut on 22/10/2566 BE.
+//  FieryFocus
 //
 
 import SwiftUI
@@ -12,50 +10,54 @@ struct NewFocusView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.self) private var environment
     @Environment(\.modelContext) private var modelContext
-    
-    @State private var isPresented = false
-    @State private var showingDiscardConfirmation = false
 
-    @State private var draft = FocusFormDraft()
+    @State private var viewModel = FocusFormViewModel()
     @FocusState private var focusedField: FocusFormField?
-    
+
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     FocusFormSampleRow(
-                        name: draft.previewName,
-                        time: draft.time,
-                        emoji: draft.emoji,
-                        color: draft.color
+                        name: viewModel.draft.previewName,
+                        time: viewModel.draft.time,
+                        emoji: viewModel.draft.emoji,
+                        color: viewModel.draft.color
                     )
                 }
                 .padding(-20)
                 .listRowBackground(Color.clear)
                 .simultaneousGesture(TapGesture().onEnded(dismissKeyboard))
 
-                FocusFormOptionsSection(
-                    emoji: $draft.emoji,
-                    color: $draft.color,
-                    isEmojiPickerPresented: $isPresented,
-                    dismissKeyboard: dismissKeyboard
-                )
-
                 FocusFormTextSection(
-                    name: $draft.name,
-                    quote: $draft.quote,
+                    name: $viewModel.draft.name,
+                    quote: $viewModel.draft.quote,
                     focusedField: $focusedField,
                     dismissKeyboard: dismissKeyboard
                 )
 
-                FocusFormTimeSection(time: $draft.time, dismissKeyboard: dismissKeyboard)
+                FocusFormOptionsSection(
+                    emoji: $viewModel.draft.emoji,
+                    color: $viewModel.draft.color,
+                    isEmojiPickerPresented: $viewModel.isEmojiPickerPresented,
+                    dismissKeyboard: dismissKeyboard
+                )
+
+                FocusFormTimeSection(
+                    time: $viewModel.draft.time,
+                    timePresets: $viewModel.draft.timePresets,
+                    dismissKeyboard: dismissKeyboard
+                )
             }
             .scrollDismissesKeyboard(.interactively)
             .navigationTitle("New Focus")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        requestDismiss()
+                        viewModel.requestDismiss(
+                            hasEdits: viewModel.hasEditedContent(in: environment),
+                            dismiss: { dismiss() }
+                        )
                     } label: {
                         Image(systemName: "xmark")
                     }
@@ -63,22 +65,25 @@ struct NewFocusView: View {
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Add") {
-                        addFocus()
+                    Button {
+                        viewModel.addFocus(to: modelContext, environment: environment)
                         dismiss()
+                    } label: {
+                        Image(systemName: "checkmark")
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.accentColor)
-                    .disabled(!draft.canSave)
+                    .disabled(!viewModel.canSave)
+                    .accessibilityLabel("Add Focus")
                 }
             }
-            .interactiveDismissDisabled(hasEditedContent)
+            .interactiveDismissDisabled(viewModel.hasEditedContent(in: environment))
             .background(
-                DismissAttemptObserver(isEnabled: hasEditedContent) {
-                    showingDiscardConfirmation = true
+                DismissAttemptObserver(isEnabled: viewModel.hasEditedContent(in: environment)) {
+                    viewModel.showingDiscardConfirmation = true
                 }
             )
-            .alert("Discard new focus?", isPresented: $showingDiscardConfirmation) {
+            .alert("Discard new focus?", isPresented: $viewModel.showingDiscardConfirmation) {
                 Button("Keep Editing", role: .cancel) { }
                 Button("Discard", role: .destructive) {
                     dismiss()
@@ -89,32 +94,8 @@ struct NewFocusView: View {
         }
     }
 
-    private var hasEditedContent: Bool {
-        draft.hasChangesFromDefault(in: environment)
-    }
-
-    private func requestDismiss() {
-        if hasEditedContent {
-            showingDiscardConfirmation = true
-        } else {
-            dismiss()
-        }
-    }
-
     private func dismissKeyboard() {
         focusedField = nil
-    }
-
-    private func addFocus() {
-        let focus = Focus(
-            name: draft.name,
-            quote: draft.quote,
-            time: [draft.time],
-            emoji: draft.emoji,
-            color: draft.colorComponents(in: environment)
-        )
-        focus.sortOrder = (try? modelContext.fetch(FetchDescriptor<Focus>()).count) ?? 0
-        modelContext.insert(focus)
     }
 }
 

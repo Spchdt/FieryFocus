@@ -35,15 +35,51 @@ extension FocusAlarmCoordinator {
         }
     }
 
+    func restoreActiveActivityIfNeeded() {
+        if let activity = FocusAlarmActivity.activities.first {
+            presentationState = activity.content.state
+            
+            contentUpdatesTask?.cancel()
+            contentUpdatesTask = Task { [weak self, activity] in
+                for await content in activity.contentUpdates {
+                    await MainActor.run {
+                        let activeID = self?.currentAlarm?.id ?? FocusAlarmActivity.activities.first?.content.state.alarmID
+                        guard content.state.alarmID == activeID else { return }
+                        self?.presentationState = content.state
+                    }
+                }
+            }
+
+            activityStateUpdatesTask?.cancel()
+            activityStateUpdatesTask = Task { [weak self, activity] in
+                for await activityState in activity.activityStateUpdates {
+                    await MainActor.run {
+                        let activeID = self?.currentAlarm?.id ?? FocusAlarmActivity.activities.first?.content.state.alarmID
+                        guard activity.content.state.alarmID == activeID else { return }
+
+                        switch activityState {
+                        case .ended, .dismissed:
+                            self?.markExternallyEnded()
+                        default:
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     func attachToActivity(_ activity: FocusAlarmActivity) async {
-        guard activity.content.state.alarmID == currentAlarm?.id else { return }
+        let activeID = currentAlarm?.id ?? FocusAlarmActivity.activities.first?.content.state.alarmID
+        guard activity.content.state.alarmID == activeID else { return }
 
         presentationState = activity.content.state
         contentUpdatesTask?.cancel()
         contentUpdatesTask = Task { [weak self, activity] in
             for await content in activity.contentUpdates {
                 await MainActor.run {
-                    guard content.state.alarmID == self?.currentAlarm?.id else { return }
+                    let currentActiveID = self?.currentAlarm?.id ?? FocusAlarmActivity.activities.first?.content.state.alarmID
+                    guard content.state.alarmID == currentActiveID else { return }
                     self?.presentationState = content.state
                 }
             }
@@ -53,7 +89,8 @@ extension FocusAlarmCoordinator {
         activityStateUpdatesTask = Task { [weak self, activity] in
             for await activityState in activity.activityStateUpdates {
                 await MainActor.run {
-                    guard activity.content.state.alarmID == self?.currentAlarm?.id else { return }
+                    let currentActiveID = self?.currentAlarm?.id ?? FocusAlarmActivity.activities.first?.content.state.alarmID
+                    guard activity.content.state.alarmID == currentActiveID else { return }
 
                     switch activityState {
                     case .ended, .dismissed:
@@ -67,10 +104,19 @@ extension FocusAlarmCoordinator {
     }
 
     func updateCurrentAlarm(with alarms: [Alarm]) {
-        guard let alarmID = currentAlarm?.id else { return }
+        let activeID = currentAlarm?.id ?? FocusAlarmActivity.activities.first?.content.state.alarmID
 
-        if let updatedAlarm = alarms.first(where: { $0.id == alarmID }) {
-            currentAlarm = updatedAlarm
+        if let alarmID = activeID {
+            if let updatedAlarm = alarms.first(where: { $0.id == alarmID }) {
+                currentAlarm = updatedAlarm
+            }
+        } else {
+            if let firstAlarm = alarms.first {
+                currentAlarm = firstAlarm
+                Task {
+                    await attachToActivity(alarmID: firstAlarm.id)
+                }
+            }
         }
     }
 

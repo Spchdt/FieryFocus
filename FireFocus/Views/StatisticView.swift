@@ -1,8 +1,6 @@
 //
-//  CalendarView.swift
-//  Meditaste
-//
-//  Created by Supachod Trakansirorut on 22/10/2566 BE.
+//  StatisticView.swift
+//  FieryFocus
 //
 
 import SwiftUI
@@ -10,50 +8,36 @@ import SwiftData
 
 struct StatisticView: View {
     @Query var focuses: [Focus]
-    
-    @State private var date = Date()
-    
-    private var sessionss: [Session] {
-        StatisticSessionStore.sessions(from: focuses)
-    }
-    
-    private var filteredSession: [Session] {
-        StatisticSessionStore.sessions(on: date, from: sessionss)
-    }
-    
-    private var summary: StatisticSummary {
-        StatisticCalculator.summary(from: sessionss)
-    }
-    
+    @State private var viewModel = StatisticViewModel(focuses: [])
+
     var body: some View {
         NavigationStack {
             ScrollView {
-                StatisticMetricsView(summary: summary)
+                StatisticMetricsView(summary: viewModel.summary)
                     .padding(.horizontal)
-                
-                
+
                 HStack {
                     Text("Daily Sessions")
                         .font(.title2)
                         .bold()
-                    
+
                     Spacer()
                 }
                 .padding([.horizontal, .top])
                 .padding(.bottom, -1)
-                    
+
                 DatePicker(
                     "Start Date",
-                    selection: $date,
+                    selection: $viewModel.selectedDate,
                     displayedComponents: [.date]
                 )
                 .datePickerStyle(.graphical)
                 .padding()
                 .glassEffect(in: .rect(cornerRadius: 35))
                 .padding([.horizontal, .bottom])
-                
+
                 ZStack {
-                    if filteredSession.count == 0 {
+                    if viewModel.filteredSessions.isEmpty {
                         HStack {
                             Spacer()
                             Text("Nothing to see on this date")
@@ -62,10 +46,10 @@ struct StatisticView: View {
                                 .fontDesign(.rounded)
                             Spacer()
                         }
-                        
+                        .padding(.bottom)
                     } else {
                         VStack {
-                            ForEach(filteredSession) { session in
+                            ForEach(viewModel.filteredSessions) { session in
                                 StatisticSessionRow(session: session)
                             }
                         }
@@ -74,6 +58,12 @@ struct StatisticView: View {
                 .padding()
             }
             .navigationTitle("Statistic")
+            .onChange(of: focuses) { _, newFocuses in
+                viewModel.update(focuses: newFocuses)
+            }
+            .onAppear {
+                viewModel.update(focuses: focuses)
+            }
         }
     }
 }

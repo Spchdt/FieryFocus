@@ -23,7 +23,7 @@ struct FocusFormSampleRow: View {
                 Button {
                 } label: {
                     HStack(spacing: 5) {
-                        Text("\(time) min")
+                        Text(time.formattedMinutes)
                             .font(.caption)
                         Image(systemName: "chevron.down")
                             .font(.system(size: 8))
@@ -60,6 +60,6 @@ struct FocusFormSampleRow: View {
         )
         .allowsHitTesting(false)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(name), \(time) minutes")
+        .accessibilityLabel("\(name), \(time.formattedMinutes)")
     }
 }

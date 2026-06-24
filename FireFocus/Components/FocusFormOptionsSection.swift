@@ -13,7 +13,7 @@ struct FocusFormOptionsSection: View {
             VStack {
                 HStack {
                     Text("Emoji")
-                        .foregroundStyle(.tertiary)
+                        .foregroundStyle(.primary)
                     Spacer()
                     ZStack {
                         RoundedRectangle(cornerRadius: 15)
@@ -39,7 +39,7 @@ struct FocusFormOptionsSection: View {
 
                 HStack {
                     Text("Color")
-                        .foregroundStyle(.tertiary)
+                        .foregroundStyle(.primary)
                     Spacer()
                     ZStack {
                         RoundedRectangle(cornerRadius: 15)
@@ -57,4 +57,3 @@ struct FocusFormOptionsSection: View {
         .roundedSection()
     }
 }
-

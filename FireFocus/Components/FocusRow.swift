@@ -3,7 +3,6 @@ import SwiftUI
 struct FocusRow: View {
     @Bindable var focus: Focus
     @Binding var currentFocus: Focus?
-    @State private var timeAlert = false
 
     let isActive: Bool
     let isMuted: Bool
@@ -13,6 +12,7 @@ struct FocusRow: View {
     let aniName: Namespace.ID
     let aniContainer: Namespace.ID
     let startSession: () -> Void
+    let completedSession: () -> Void
 
     var body: some View {
         Group {
@@ -24,13 +24,13 @@ struct FocusRow: View {
                     aniEmoji: aniEmoji,
                     aniName: aniName,
                     color: focus.getColor(),
-                    autoStart: true
+                    autoStart: true,
+                    completedSession: completedSession
                 )
                 .transition(.opacity)
             } else {
                 FocusCompactRow(
                     focus: focus,
-                    timeAlert: $timeAlert,
                     isMuted: isMuted,
                     showsPlayButton: showsPlayButton,
                     aniColor: aniColor,
@@ -43,9 +43,6 @@ struct FocusRow: View {
             }
         }
         .animation(.smooth(duration: 0.28), value: isActive)
-        .sheet(isPresented: $timeAlert) {
-            EditTimeView(focus: focus)
-        }
     }
 }
 
@@ -82,6 +79,7 @@ private struct FocusRowPreview: View {
             aniContainer: aniContainer
         ) {
             currentFocus = focus
+        } completedSession: {
         }
         .padding()
         .glassEffect(.regular, in: .rect(cornerRadius: 35))

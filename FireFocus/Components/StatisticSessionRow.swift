@@ -32,13 +32,15 @@ struct StatisticSessionRow: View {
 
                     ZStack {
                         RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 80, height: 40)
                             .foregroundStyle(session.getColor().opacity(0.5))
 
-                        Text("\(session.seconds / 60) min")
+                        Text((session.seconds / 60).formattedMinutes)
                             .fontWeight(.semibold)
                             .fontDesign(.rounded)
+                            .padding(.horizontal, 10)
                     }
+                    .frame(minWidth: 80, minHeight: 40, maxHeight: 40)
+                    .fixedSize(horizontal: true, vertical: false)
                     .padding(.trailing, 15)
                 }
                 .frame(height: 70)

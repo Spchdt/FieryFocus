@@ -4,12 +4,12 @@ struct FocusTimerControls: View {
     let focus: Focus
     let color: Color
     let aniColor: Namespace.ID
-    let session: FocusTimerSession
+    let viewModel: FocusTimerViewModel
     let playPause: () -> Void
     let close: () -> Void
 
     var body: some View {
-        if session.start || session.schedulingAlarm || session.autoStartQueued {
+        if viewModel.start || viewModel.schedulingAlarm || viewModel.autoStartQueued {
             activeControls
         } else {
             startButton
@@ -18,32 +18,32 @@ struct FocusTimerControls: View {
 
     private var activeControls: some View {
         VStack(spacing: 14) {
-            if session.start {
-                Text(session.end ? "Done" : "\"\(focus.quote)\"")
+            if viewModel.start {
+                Text(viewModel.end ? "Done" : "\"\(focus.quote)\"")
                     .multilineTextAlignment(.center)
-                    .font(session.end ? .title3 : .body)
-                    .fontWeight(session.end ? .semibold : .regular)
-                    .fontDesign(session.end ? .rounded : .serif)
+                    .font(viewModel.end ? .title3 : .body)
+                    .fontWeight(viewModel.end ? .semibold : .regular)
+                    .fontDesign(viewModel.end ? .rounded : .serif)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 15)
                     .padding(.horizontal, 12)
                     .glassEffect(.regular, in: .rect(cornerRadius: 20))
-                    .background(color.opacity(session.end ? 0.28 : 0.14), in: .rect(cornerRadius: 20))
+                    .background(color.opacity(viewModel.end ? 0.28 : 0.14), in: .rect(cornerRadius: 20))
                     .onTapGesture {
-                        if session.end {
+                        if viewModel.end {
                             close()
                         }
                     }
                     .transition(.opacity)
             }
 
-            if !session.end {
+            if !viewModel.end {
                 HStack(spacing: 12) {
                     stopButton
 
                     actionButton(
-                        title: session.timerActive ? "Pause" : "Play",
-                        systemName: session.timerActive ? "pause.fill" : "play.fill"
+                        title: viewModel.timerActive ? "Pause" : "Play",
+                        systemName: viewModel.timerActive ? "pause.fill" : "play.fill"
                     )
                 }
                 .frame(maxWidth: .infinity)
@@ -88,7 +88,7 @@ struct FocusTimerControls: View {
         .tint(.white)
         .buttonBorderShape(.capsule)
         .matchedGeometryEffect(id: focus.id, in: aniColor, properties: .frame)
-        .disabled(session.schedulingAlarm || session.autoStartQueued)
+        .disabled(viewModel.schedulingAlarm || viewModel.autoStartQueued)
     }
 
     private var stopButton: some View {

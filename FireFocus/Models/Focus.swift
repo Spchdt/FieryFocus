@@ -49,3 +49,14 @@ class Focus {
         sessions?.append(session)
     }
 }
+
+extension Int {
+    var formattedMinutes: String {
+        let hours = self / 60
+        let remainingMinutes = self % 60
+        if hours > 0 {
+            return remainingMinutes > 0 ? "\(hours)h \(remainingMinutes)m" : "\(hours)h"
+        }
+        return "\(self) min"
+    }
+}

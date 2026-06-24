@@ -5,13 +5,12 @@ struct EditFocusView: View {
     @Environment(\.self) private var environment
 
     @Bindable var focus: Focus
-    @State private var isEmojiPickerPresented = false
-    @State private var draft: FocusFormDraft
+    @State private var viewModel: FocusFormViewModel
     @FocusState private var focusedField: FocusFormField?
 
     init(focus: Focus) {
         self.focus = focus
-        self._draft = State(wrappedValue: FocusFormDraft(focus: focus))
+        self._viewModel = State(wrappedValue: FocusFormViewModel(editing: focus))
     }
 
     var body: some View {
@@ -19,31 +18,35 @@ struct EditFocusView: View {
             Form {
                 Section {
                     FocusFormSampleRow(
-                        name: draft.previewName,
-                        time: draft.time,
-                        emoji: draft.emoji,
-                        color: draft.color
+                        name: viewModel.draft.previewName,
+                        time: viewModel.draft.time,
+                        emoji: viewModel.draft.emoji,
+                        color: viewModel.draft.color
                     )
                 }
                 .padding(-20)
                 .listRowBackground(Color.clear)
                 .simultaneousGesture(TapGesture().onEnded(dismissKeyboard))
 
-                FocusFormOptionsSection(
-                    emoji: $draft.emoji,
-                    color: $draft.color,
-                    isEmojiPickerPresented: $isEmojiPickerPresented,
-                    dismissKeyboard: dismissKeyboard
-                )
-
                 FocusFormTextSection(
-                    name: $draft.name,
-                    quote: $draft.quote,
+                    name: $viewModel.draft.name,
+                    quote: $viewModel.draft.quote,
                     focusedField: $focusedField,
                     dismissKeyboard: dismissKeyboard
                 )
 
-                FocusFormTimeSection(time: $draft.time, dismissKeyboard: dismissKeyboard)
+                FocusFormOptionsSection(
+                    emoji: $viewModel.draft.emoji,
+                    color: $viewModel.draft.color,
+                    isEmojiPickerPresented: $viewModel.isEmojiPickerPresented,
+                    dismissKeyboard: dismissKeyboard
+                )
+
+                FocusFormTimeSection(
+                    time: $viewModel.draft.time,
+                    timePresets: $viewModel.draft.timePresets,
+                    dismissKeyboard: dismissKeyboard
+                )
             }
             .scrollDismissesKeyboard(.interactively)
             .navigationTitle("Edit Focus")
@@ -58,25 +61,19 @@ struct EditFocusView: View {
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        saveFocus()
+                    Button {
+                        viewModel.saveFocus(environment: environment)
                         dismiss()
+                    } label: {
+                        Image(systemName: "checkmark")
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.accentColor)
-                    .disabled(!draft.canSave)
+                    .disabled(!viewModel.canSave)
+                    .accessibilityLabel("Done")
                 }
             }
         }
-    }
-
-    private func saveFocus() {
-        focus.name = draft.name
-        focus.quote = draft.quote
-        focus.emoji = draft.emoji
-        focus.color = draft.colorComponents(in: environment)
-        focus.time = [draft.time]
-        focus.currentTime = draft.time
     }
 
     private func dismissKeyboard() {

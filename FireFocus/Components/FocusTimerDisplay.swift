@@ -25,6 +25,8 @@ struct FocusTimerDisplay: View {
                             .fontWeight(.semibold)
                             .fontDesign(.rounded)
                             .monospacedDigit()
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.55)
                             .contentTransition(.numericText())
                             .transition(.scale.combined(with: .opacity))
                     } else {

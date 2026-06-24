@@ -2,7 +2,6 @@ import SwiftUI
 
 struct FocusCompactRow: View {
     @Bindable var focus: Focus
-    @Binding var timeAlert: Bool
 
     let isMuted: Bool
     let showsPlayButton: Bool
@@ -56,19 +55,13 @@ struct FocusCompactRow: View {
     private var timeMenu: some View {
         Menu {
             ForEach(focus.time, id: \.self) { time in
-                Button("\(time) min") {
+                Button(time.formattedMinutes) {
                     focus.currentTime = time
                 }
             }
-
-            Button {
-                timeAlert.toggle()
-            } label: {
-                Label("Edit time", systemImage: "square.and.pencil")
-            }
         } label: {
             HStack(spacing: 5) {
-                Text("\(focus.currentTime) min")
+                Text(focus.currentTime.formattedMinutes)
                     .font(.caption)
                 Image(systemName: "chevron.down")
                     .font(.system(size: 8))

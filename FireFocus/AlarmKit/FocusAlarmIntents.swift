@@ -111,6 +111,6 @@ extension AlarmButton {
     }
     
     static var focusDoneButton: Self {
-        AlarmButton(text: "Stop", textColor: .white, systemImageName: "stop.circle")
+        AlarmButton(text: "Stop", textColor: .white, systemImageName: "stop.fill")
     }
 }

@@ -14,11 +14,19 @@ final class FocusAlarmCoordinator {
     typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<FocusAlarmMetadata>
     typealias FocusAlarmActivity = Activity<AlarmAttributes<FocusAlarmMetadata>>
     
+    static var activeAlarmFocusName: String? {
+        FocusAlarmActivity.activities.first?.attributes.metadata?.name
+    }
+    
     var currentAlarm: Alarm?
     var presentationState: AlarmPresentationState?
     var lastErrorDescription: String?
     var externalCompletionCount = 0
     var externalStopCount = 0
+    
+    private var activeAlarmID: UUID? {
+        currentAlarm?.id ?? FocusAlarmActivity.activities.first?.content.state.alarmID
+    }
     
     @ObservationIgnored let alarmManager = AlarmManager.shared
     @ObservationIgnored var alarmUpdatesTask: Task<Void, Never>?
@@ -29,6 +37,7 @@ final class FocusAlarmCoordinator {
     init() {
         observeAlarms()
         observeActivities()
+        restoreActiveActivityIfNeeded()
     }
     
     deinit {
@@ -36,6 +45,16 @@ final class FocusAlarmCoordinator {
         activityUpdatesTask?.cancel()
         contentUpdatesTask?.cancel()
         activityStateUpdatesTask?.cancel()
+    }
+    
+    func cleanupStaleActivities() {
+        Task {
+            for activity in FocusAlarmActivity.activities {
+                if activity.content.state.alarmID != currentAlarm?.id {
+                    await activity.end(nil, dismissalPolicy: .immediate)
+                }
+            }
+        }
     }
     
     @discardableResult
@@ -47,6 +66,7 @@ final class FocusAlarmCoordinator {
         }
         
         stopOrCancelCurrentAlarm()
+        cleanupStaleActivities()
         activityStateUpdatesTask?.cancel()
         activityStateUpdatesTask = nil
         
@@ -94,7 +114,7 @@ final class FocusAlarmCoordinator {
     }
     
     func pauseCurrentAlarm() {
-        guard let alarmID = currentAlarm?.id else { return }
+        guard let alarmID = activeAlarmID else { return }
         
         do {
             try alarmManager.pause(id: alarmID)
@@ -117,7 +137,7 @@ final class FocusAlarmCoordinator {
     }
     
     func resumeCurrentAlarm() {
-        guard let alarmID = currentAlarm?.id else { return }
+        guard let alarmID = activeAlarmID else { return }
         
         do {
             try alarmManager.resume(id: alarmID)
@@ -140,14 +160,26 @@ final class FocusAlarmCoordinator {
     }
     
     func stopOrCancelCurrentAlarm() {
-        guard let alarm = currentAlarm else { return }
+        guard let alarmID = activeAlarmID else { return }
         
         do {
-            switch alarm.state {
-            case .alerting:
-                try alarmManager.stop(id: alarm.id)
-            default:
-                try alarmManager.cancel(id: alarm.id)
+            let isAlerting: Bool
+            if let alarm = currentAlarm {
+                isAlerting = alarm.state == .alerting
+            } else if let mode = presentationState?.mode {
+                if case .alert = mode {
+                    isAlerting = true
+                } else {
+                    isAlerting = false
+                }
+            } else {
+                isAlerting = false
+            }
+            
+            if isAlerting {
+                try alarmManager.stop(id: alarmID)
+            } else {
+                try alarmManager.cancel(id: alarmID)
             }
             currentAlarm = nil
             presentationState = nil
@@ -158,7 +190,7 @@ final class FocusAlarmCoordinator {
             lastErrorDescription = nil
         } catch {
             do {
-                try alarmManager.cancel(id: alarm.id)
+                try alarmManager.cancel(id: alarmID)
                 currentAlarm = nil
                 presentationState = nil
                 contentUpdatesTask?.cancel()
@@ -168,6 +200,14 @@ final class FocusAlarmCoordinator {
                 lastErrorDescription = nil
             } catch {
                 lastErrorDescription = error.localizedDescription
+            }
+        }
+        
+        Task {
+            for activity in FocusAlarmActivity.activities {
+                if activity.content.state.alarmID == alarmID {
+                    await activity.end(nil, dismissalPolicy: .immediate)
+                }
             }
         }
     }

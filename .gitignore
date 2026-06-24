@@ -5,3 +5,6 @@ build/
 xcuserdata/
 *.xcbkptlist
 
+# Antigravity agent config (not relevant to contributors)
+.agents/
+skills-lock.json

@@ -10,6 +10,7 @@ struct FocusFormDraft {
     var name: String
     var quote: String
     var time: Int
+    var timePresets: [Int]
     var emoji: String
     var color: Color
 
@@ -17,12 +18,16 @@ struct FocusFormDraft {
         name: String = defaultName,
         quote: String = defaultQuote,
         time: Int = defaultTime,
+        timePresets: [Int] = [defaultTime],
         emoji: String = defaultEmoji,
         color: Color = defaultColor
     ) {
+        let resolvedTime = time > 0 ? time : Self.defaultTime
+
         self.name = name
         self.quote = quote
-        self.time = time
+        self.time = resolvedTime
+        self.timePresets = Self.normalizedTimePresets(timePresets, selectedTime: resolvedTime)
         self.emoji = emoji
         self.color = color
     }
@@ -32,6 +37,7 @@ struct FocusFormDraft {
             name: focus.name,
             quote: focus.quote,
             time: focus.currentTime,
+            timePresets: focus.time,
             emoji: focus.emoji,
             color: focus.getColor()
         )
@@ -42,7 +48,7 @@ struct FocusFormDraft {
     }
 
     var canSave: Bool {
-        !name.isEmpty && !quote.isEmpty
+        !name.isEmpty && !quote.isEmpty && !timePresets.isEmpty
     }
 
     func colorComponents(in environment: EnvironmentValues) -> [Float] {
@@ -54,8 +60,24 @@ struct FocusFormDraft {
         name.isEmpty == false ||
         quote.isEmpty == false ||
         time != Self.defaultTime ||
+        timePresets != [Self.defaultTime] ||
         emoji != Self.defaultEmoji ||
         colorHasChangedFromDefault(in: environment)
+    }
+
+    private static func normalizedTimePresets(_ presets: [Int], selectedTime: Int) -> [Int] {
+        var normalizedPresets = presets.filter { $0 > 0 }
+
+        if selectedTime > 0 && !normalizedPresets.contains(selectedTime) {
+            normalizedPresets.insert(selectedTime, at: 0)
+        }
+
+        var seenPresets = Set<Int>()
+        normalizedPresets = normalizedPresets.filter { seenPresets.insert($0).inserted }
+
+        normalizedPresets.sort()
+
+        return normalizedPresets.isEmpty ? [defaultTime] : normalizedPresets
     }
 
     private func colorHasChangedFromDefault(in environment: EnvironmentValues) -> Bool {
@@ -67,4 +89,3 @@ struct FocusFormDraft {
         return redChanged || greenChanged || blueChanged
     }
 }
-

@@ -18,6 +18,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A10000000000000000000020"
                BuildableName = "AlarmLiveActivityExtension.appex"
+               BlueprintName = "AlarmLiveActivityExtension"
                ReferencedContainer = "container:FieryFocus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,6 +32,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EB7021C22AE68B6A00D9728F"
                BuildableName = "FieryFocus.app"
+               BlueprintName = "FieryFocus"
                ReferencedContainer = "container:FieryFocus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,6 +64,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB7021C22AE68B6A00D9728F"
             BuildableName = "FieryFocus.app"
+            BlueprintName = "FieryFocus"
             ReferencedContainer = "container:FieryFocus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -97,6 +100,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB7021C22AE68B6A00D9728F"
             BuildableName = "FieryFocus.app"
+            BlueprintName = "FieryFocus"
             ReferencedContainer = "container:FieryFocus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
